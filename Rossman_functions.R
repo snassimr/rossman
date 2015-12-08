@@ -20,16 +20,18 @@ perform_data_preparation <- function()
   
   #READ TRAIN DATA
   setwd(SYSG_INPUT_DIR)
-  train_input         <- read_csv("train.csv")
-  test_input          <- read_csv("test.csv")
-  store_input         <- read_csv("store.csv")
-  store_states_input  <- read_csv("store_states.csv")
+  train_input                 <- read_csv("train.csv")
+  test_input                  <- read_csv("test.csv")
+  store_input                 <- read_csv("store.csv")
+  store_states_input          <- read_csv("store_states.csv")
+  state_stats_input           <- read_csv("state_stats.csv")
+  state_school_holiday_input  <- read_csv("state_school_holiday.csv")
   
-  SYS_IDENTIFIER_FEATURES    <- 1
-  SYS_INFO_FEATURES          <- 5
   SYS_TARGET_NAME            <- "Sales"
   
   ############# Processing train data input  ###############################
+  
+  create_log_entry("", "Prepare train data started","SF")
   
   # Filter out non-working days
   pop_filter           <- train_input$Open=='1' & train_input$Sales!=0
@@ -51,7 +53,7 @@ perform_data_preparation <- function()
   names(promo2_interval_data) <- c("Store",paste0(month.abb,"_in_pi"))
   # Subselect train input
   # summary(train_input1)
-  sales_features_select <- c("Store","DayOfWeek","Promo","SchoolHoliday","SalesF")
+  sales_features_select <- c("Store","DayOfWeek","Promo", "Customers","SalesF")
   train_input2 <- data.frame(train_input1["Id"],me_vbfe_Date,train_input1[,sales_features_select])
   
   # Subselect store input
@@ -61,11 +63,16 @@ perform_data_preparation <- function()
                              "Promo2","Promo2SinceWeek","Promo2SinceYear")
   store_input1     <- store_input[,store_features_select]
   store_input2     <- process_store_missing_data(store_input1)
-  store_input3     <- left_join(store_input2,store_states_input,by="Store")
   
-  train_input3     <-  left_join(train_input2,store_input3,by="Store")
+  store_state_features_select <- c("Store","State","GDP")
+  store_states_input1         <- left_join(store_states_input,state_stats_input,by="State")[,store_state_features_select]
+  store_input3                <- left_join(store_input2,store_states_input1,by="Store")
   
-  vbfe_Sales_Store <- create_vbfe_sales_store(train_input3,promo2_interval_data)
+  train_input3     <- left_join(train_input2,store_input3,by="Store")
+  
+  vbfe_Sales_Store <- create_vbfe_sales_store(train_input3,
+                                              promo2_interval_data,
+                                              state_school_holiday_input)
   
   train_input4     <- data.frame(train_input3, vbfe_Sales_Store)
   
@@ -74,36 +81,51 @@ perform_data_preparation <- function()
   train_input5     <- left_join(train_input4,abfe_Sales_Store$Store_DayOfWeek_meansales,
                                 by = c("Store","DayOfWeek"))
   train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_Promo_meansales,
-                                by = c("Store","Promo"))
+                               by = c("Store","Promo"))
+  train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_DayOfWeek_meancustomersales,
+                                by = c("Store","DayOfWeek"))
+  train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_meancustomersales,
+                                by = c("Store"))
   
   train_input6     <- data.frame(train_input5)
 
   # Drop Id and SalesF column and append target feature
-  me_input_data <- data.frame(train_input6[,setdiff(names(train_input6),c("Id","SalesF"))], Sales = me_input_target_data)
+  me_input_data <- data.frame(train_input6[,setdiff(names(train_input6),c("Id","SalesF","Customers"))], 
+                              Sales = me_input_target_data)
 
+  create_log_entry("", "Prepare train data finished","SF")
+  
   # summary(me_input_data)
   # str(me_input_data)
   
   ########### Processing test data input   #################################### 
+  create_log_entry("", "Prepare test data started","SF")
   # summary(test_input)
   # str(test_input)
   
   # Value-based features on train input data
   p_vbfe_Date           <- create_vbfe_sales(test_input)
-  p_features_select     <- c("Id","Open" , setdiff(names(me_input_data),c("Sales","SalesF")))
+  p_features_select     <- c("Id","Open" , setdiff(names(me_input_data),c("Sales")))
   
   test_input1           <- data.frame(p_vbfe_Date,test_input)
   test_input2           <- left_join(test_input1,store_input3, by = "Store")
-  p_vbfe_Sales_Store    <- create_vbfe_sales_store(test_input2,promo2_interval_data)
+  p_vbfe_Sales_Store    <- create_vbfe_sales_store(test_input2,
+                                                   promo2_interval_data,
+                                                   state_school_holiday_input)
   test_input3           <- data.frame(test_input2, p_vbfe_Sales_Store)
   
   test_input4           <- left_join(test_input3,abfe_Sales_Store$Store_DayOfWeek_meansales,
                                      by = c("Store","DayOfWeek"))
   test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_Promo_meansales,
                                      by = c("Store","Promo"))
+  test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_DayOfWeek_meancustomersales,
+                                by = c("Store","DayOfWeek"))
+  test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_meancustomersales,
+                                     by = c("Store"))
   
-  p_input_data           <- data.frame(test_input4)
+  p_input_data           <- data.frame(test_input4[,p_features_select])
   
+  create_log_entry("", "Prepare test data finished","SF")
   
   for (f in names(me_input_data)) {
     if (class(me_input_data[[f]])=="character") {
@@ -146,7 +168,7 @@ create_vbfe_sales <- function(input_data)
   return(vbfe_Sales)
 }
 
-create_vbfe_sales_store <- function(input_data,promo2_interval_data)
+create_vbfe_sales_store <- function(input_data,promo2_interval_data,state_school_holiday)
 {
   
   # Year , month and day of Date
@@ -157,6 +179,7 @@ create_vbfe_sales_store <- function(input_data,promo2_interval_data)
   Promo2SinceYear            <- input_data$Promo2SinceYear
   Promo2SinceWeek            <- input_data$Promo2SinceWeek
   Date_month_store           <- input_data[,c("Store","Date_month")]
+  Date_State                 <- input_data[,c("Date_year","Date_month","Date_day","State")]
   
   CompetitionSalesSeniorityMonths <- 
     ifelse(CompetitionOpenSinceYear==0 | CompetitionOpenSinceMonth==0 , -9999 , 12*(Date_year - CompetitionOpenSinceYear) + (Date_month - CompetitionOpenSinceMonth))
@@ -169,10 +192,25 @@ create_vbfe_sales_store <- function(input_data,promo2_interval_data)
     ifelse(x[x["Date_month"]+2]==1,1,0) 
   })
   
+  # Append state school holiday data
   
-  vbfe_Sales_Store  <- data.frame(CompetitionSalesSeniorityMonths=CompetitionSalesSeniorityMonths,
-                                  Promo2SalesSeniorityMonths=Promo2SalesSeniorityMonths,
-                                  Promo2MonthFlg=Promo2MonthFlg)
+  state_school_holiday1 <- 
+    data.frame(state_school_holiday,
+               Date_year = as.integer(substr(state_school_holiday$SchoolHolidayDate, 7 , 10)),
+               Date_month = as.integer(substr(state_school_holiday$SchoolHolidayDate, 4 , 5)),
+               Date_day = as.integer(substr(state_school_holiday$SchoolHolidayDate, 1 , 2)))
+  
+  state_school_holiday_data  <- left_join(Date_State,state_school_holiday1, 
+                                by = c("Date_year","Date_month","Date_day","State"))
+  state_school_holiday_data$SchoolHolidayType <- ifelse(is.na(state_school_holiday_data$SchoolHolidayType),"AAA",state_school_holiday_data$SchoolHolidayType)
+  state_school_holiday_data$SchoolHolidayDateFlg <- 
+                                ifelse(is.na(state_school_holiday_data$SchoolHolidayDate),0,1)
+  
+  vbfe_Sales_Store  <- data.frame(CompetitionSalesSeniorityMonths = CompetitionSalesSeniorityMonths,
+                                  Promo2SalesSeniorityMonths      = Promo2SalesSeniorityMonths,
+                                  Promo2MonthFlg                  = Promo2MonthFlg,
+                                  SchoolHolidayType               = state_school_holiday_data$SchoolHolidayType ,
+                                  SchoolHolidayDateFlg            = state_school_holiday_data$SchoolHolidayDateFlg)
   return(vbfe_Sales_Store)
 }
 
@@ -192,9 +230,19 @@ create_abfe_sales_store <- function(input_data)
                                        c("Store", "Promo") , summarise,
                                        Store_Promo_meansales = mean(SalesF))
   
+  # Mean of input Sales per Store and Promo
+  Store_meancustomersales_f               <- c("Id","Store","DayOfWeek","Customers","SalesF")
+  Store_DayOfWeek_meancustomersales       <- ddply(input_data[Store_meancustomersales_f], 
+                                             c("Store", "DayOfWeek") , summarise,
+                                             Store_DayOfWeek_meancustomersales = mean(SalesF)/mean(Customers))
+  Store_meancustomersales                 <- ddply(input_data[Store_meancustomersales_f], 
+                                                   c("Store") , summarise,
+                                                   Store_meancustomersales = mean(SalesF)/mean(Customers))
   
   abfe_Sales_Store <- list(Store_DayOfWeek_meansales=Store_DayOfWeek_meansales,
-                           Store_Promo_meansales=Store_Promo_meansales)
+                           Store_Promo_meansales=Store_Promo_meansales,
+                           Store_DayOfWeek_meancustomersales=Store_DayOfWeek_meancustomersales,
+                           Store_meancustomersales=Store_meancustomersales)
   
   return(abfe_Sales_Store)
 }
@@ -252,16 +300,16 @@ create_model_assessment_data <- function (me_input_data,ma_run_id)
     xgb_tuneGrid   <- expand.grid(  nrounds   = seq(200,400, length.out = 3) , 
                                     eta       = seq(0.02,0.05, length.out = 4) , 
                                     max_depth = seq(9,12, length.out = 4))
-    xgb_tuneGrid   <- expand.grid(  nrounds   = 300 , 
+    xgb_tuneGrid   <- expand.grid(  nrounds   = 500 , 
                                     eta       = 0.05 , 
                                     max_depth = 10)
     assesment_grid <- xgb_tuneGrid
   }
   
   if (grepl("GBM",ma_run_id)) {
-    gbm_tuneGrid   <- expand.grid(interaction.depth = seq(3,3, length.out = 1),
-                                  n.trees = seq(20,20, length.out = 1),
-                                  shrinkage = seq(0.02,0.02, length.out = 1) , n.minobsinnode = 5)
+    gbm_tuneGrid   <- expand.grid(interaction.depth = seq(5,5, length.out = 1),
+                                  n.trees = seq(301,301, length.out = 1),
+                                  shrinkage = seq(0.05,0.05, length.out = 1) , n.minobsinnode = 5)
     assesment_grid <- gbm_tuneGrid
   }
   
@@ -286,7 +334,7 @@ create_model_assessment_data <- function (me_input_data,ma_run_id)
                          maximize            = FALSE,
                          objective           = 'reg:linear',
                          min_child_weight    = 5,
-                         lambda              = 0.01,
+                         lambda              = 0.1,
                          nthread             = 6)
     
     classification_model <- xgbc_model
@@ -341,6 +389,7 @@ RMPSE <- function(data,lev = NULL, model = NULL) {
   err
 }
 
+
 # Create final model using optimal parameters tuned by caret + non-tunable parameters after manual evaluation
 # Use all train data set
 create_p_model <- function (opt_model_id , opt_parameters, me_input_data)
@@ -367,8 +416,7 @@ create_p_model <- function (opt_model_id , opt_parameters, me_input_data)
                          trControl = m_control, tuneGrid = opt_parameters , 
                          objective           = 'reg:linear',
                          min_child_weight    = 5,
-                         nthread             = 2,
-                         lambda              = 0.01,
+                         lambda              = 0.1,
                          nthread             = 6)
     
     opt_classification_model <- xgbc_model

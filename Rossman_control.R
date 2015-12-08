@@ -46,7 +46,7 @@ if (SYS_RUN_MODE == "ME") {
   closeAllConnections()
   
   library(doMC)
-  registerDoMC(cores=4)
+  registerDoMC(cores=6)
 
   
   # START MODEL ASSESSMENT
@@ -61,7 +61,7 @@ if (SYS_RUN_MODE == "ME") {
 
 ############################################ PREDICTION #####################################################
 
-ma_run_id <- "MA_#XGBC#2015-12-03 00_02_33"
+ma_run_id <- "MA_#XGBC#2015-12-08 17_31_45"
 if (SYS_RUN_MODE == "P") {
   create_log_entry("", "Starting prediction on data","SF")
   opt_model_id <- paste0("MODEL_","#",SYS_ALGORITHM_ID,"#",format(Sys.time(), "%Y-%m-%d %H_%M_%S"))
