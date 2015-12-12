@@ -9,7 +9,11 @@ perform_data_understanding <- function()
                     mean = mean(Sales),
                     sd   = sd(Sales),
                     se   = sd / sqrt(N))
-  
+ 
+  stores_in_train_data <- unique(me_input_data$Store)
+  stores_in_test_data  <- unique(p_input_data$Store)
+  stores_in_train_data[!stores_in_train_data %in% stores_in_test_data]
+   
 }
 
 perform_data_preparation <- function()
@@ -26,6 +30,7 @@ perform_data_preparation <- function()
   store_states_input          <- read_csv("store_states.csv")
   state_stats_input           <- read_csv("state_stats.csv")
   state_school_holiday_input  <- read_csv("state_school_holiday.csv")
+  weather_data_input          <- read_csv("WeatherData.csv")
   
   SYS_TARGET_NAME            <- "Sales"
   
@@ -33,7 +38,12 @@ perform_data_preparation <- function()
   
   create_log_entry("", "Prepare train data started","SF")
   
-  # Filter out non-working days
+  # Filter out non-working days and stores are not on test data
+  stores_in_train_data <- unique(train_input$Store)
+  stores_in_test_data  <- unique(test_input$Store)
+  relevant_stores <- stores_in_train_data[stores_in_train_data %in% stores_in_test_data]
+  
+  pop_filter           <- train_input$Open=='1' & train_input$Sales!=0 & train_input$Store %in% relevant_stores
   pop_filter           <- train_input$Open=='1' & train_input$Sales!=0
   train_input1         <- train_input[pop_filter,]
   train_input1$SalesF  <- train_input1$Sales
@@ -72,7 +82,8 @@ perform_data_preparation <- function()
   
   vbfe_Sales_Store <- create_vbfe_sales_store(train_input3,
                                               promo2_interval_data,
-                                              state_school_holiday_input)
+                                              state_school_holiday_input,
+                                              weather_data_input)
   
   train_input4     <- data.frame(train_input3, vbfe_Sales_Store)
   
@@ -86,6 +97,17 @@ perform_data_preparation <- function()
                                 by = c("Store","DayOfWeek"))
   train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_meancustomersales,
                                 by = c("Store"))
+  train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_Promo_meancustomersales,
+                                by = c("Store","Promo"))
+#   train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_Promo2_meansales,
+#                                 by = c("Store","Promo2"))
+#   train_input5     <- left_join(train_input5,abfe_Sales_Store$Store_Promo2MonthFlg_meansales,
+#                                 by = c("Store","Promo2MonthFlg"))
+#   
+#   train_input5     <- left_join(train_input5,abfe_Sales_Store$State_StoreType_meansales,
+#                                 by = c("State","StoreType"))
+  
+  
   
   train_input6     <- data.frame(train_input5)
 
@@ -111,7 +133,8 @@ perform_data_preparation <- function()
   test_input2           <- left_join(test_input1,store_input3, by = "Store")
   p_vbfe_Sales_Store    <- create_vbfe_sales_store(test_input2,
                                                    promo2_interval_data,
-                                                   state_school_holiday_input)
+                                                   state_school_holiday_input,
+                                                   weather_data_input)
   test_input3           <- data.frame(test_input2, p_vbfe_Sales_Store)
   
   test_input4           <- left_join(test_input3,abfe_Sales_Store$Store_DayOfWeek_meansales,
@@ -122,7 +145,14 @@ perform_data_preparation <- function()
                                 by = c("Store","DayOfWeek"))
   test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_meancustomersales,
                                      by = c("Store"))
-  
+  test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_Promo_meancustomersales,
+                                     by = c("Store","Promo"))
+#   test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_Promo2_meansales,
+#                                      by = c("Store","Promo2"))
+#   test_input4           <- left_join(test_input4,abfe_Sales_Store$Store_Promo2MonthFlg_meansales,
+#                                      by = c("Store","Promo2MonthFlg"))
+#   test_input4           <- left_join(test_input4,abfe_Sales_Store$State_StoreType_meansales,
+#                                      by = c("State","StoreType"))
   p_input_data           <- data.frame(test_input4[,p_features_select])
   
   create_log_entry("", "Prepare test data finished","SF")
@@ -168,7 +198,7 @@ create_vbfe_sales <- function(input_data)
   return(vbfe_Sales)
 }
 
-create_vbfe_sales_store <- function(input_data,promo2_interval_data,state_school_holiday)
+create_vbfe_sales_store <- function(input_data,promo2_interval_data,state_school_holiday,weather_data_input)
 {
   
   # Year , month and day of Date
@@ -206,11 +236,44 @@ create_vbfe_sales_store <- function(input_data,promo2_interval_data,state_school
   state_school_holiday_data$SchoolHolidayDateFlg <- 
                                 ifelse(is.na(state_school_holiday_data$SchoolHolidayDate),0,1)
   
+  #################################################### PROCESS WEATHER DATA ################
+  
+  weather_data_f     <- c("State","Date","Max_TemperatureC" , "Mean_TemperatureC" , "Min_TemperatureC" , "Precipitationmm","CloudCover","Events")
+  weather_data_input <- weather_data_input[,weather_data_f]
+  
+  #Process data keys
+  Date_year = as.integer(substr(weather_data_input$Date, 7 , 10))
+  Date_month = as.integer(substr(weather_data_input$Date, 4 , 5))
+  Date_day = as.integer(substr(weather_data_input$Date, 1 , 2))
+  
+  events_str_vector <- strsplit(weather_data_input$Events,"-")
+  
+  event_values <- unique(unlist(events_str_vector))
+  
+  events_vector <- t(sapply(events_str_vector,function (x)
+    {
+    as.integer(event_values %in% x)
+  }))
+  
+  colnames(events_vector) <- paste0("Event_",event_values)
+  
+  weather_data_input$CloudCover <- ifelse(is.na(weather_data_input$CloudCover),-9999 ,weather_data_input$CloudCover)
+  weather_data_input            <- data.frame(Date_year=Date_year, Date_month=Date_month,Date_day=Date_day,
+                                              weather_data_input[,c("State","Max_TemperatureC","Mean_TemperatureC","Min_TemperatureC","Precipitationmm","CloudCover")],
+                                              events_vector)
+                                              
+  weather_data_input            <- left_join(input_data[,c("Date_year","Date_month","Date_day","State")],
+                                             weather_data_input,by=c("Date_year", "Date_month" , "Date_day", "State"))
+  
+  aaa            <- left_join(input_data[,c("Date_year","Date_month","Date_day","State")],
+                                             weather_data_input,by=c("Date_year", "Date_month" , "Date_day", "State"))
+  
   vbfe_Sales_Store  <- data.frame(CompetitionSalesSeniorityMonths = CompetitionSalesSeniorityMonths,
                                   Promo2SalesSeniorityMonths      = Promo2SalesSeniorityMonths,
                                   Promo2MonthFlg                  = Promo2MonthFlg,
                                   SchoolHolidayType               = state_school_holiday_data$SchoolHolidayType ,
-                                  SchoolHolidayDateFlg            = state_school_holiday_data$SchoolHolidayDateFlg)
+                                  SchoolHolidayDateFlg            = state_school_holiday_data$SchoolHolidayDateFlg,
+                                  weather_data_input[,!names(weather_data_input) %in% c("Date_year", "Date_month" , "Date_day", "State")])
   return(vbfe_Sales_Store)
 }
 
@@ -230,31 +293,46 @@ create_abfe_sales_store <- function(input_data)
                                        c("Store", "Promo") , summarise,
                                        Store_Promo_meansales = mean(SalesF))
   
+  Store_Promo2_meansales_f     <- c("Id","Store","Promo2","SalesF")
+  Store_Promo2_meansales       <- ddply(input_data[Store_Promo2_meansales_f], 
+                                       c("Store", "Promo2") , summarise,
+                                       Store_Promo2_meansales = mean(SalesF))
+  
+  Store_Promo2MonthFlg_meansales_f     <- c("Id","Store","Promo2MonthFlg","SalesF")
+  Store_Promo2MonthFlg_meansales       <- ddply(input_data[Store_Promo2MonthFlg_meansales_f], 
+                                        c("Store", "Promo2MonthFlg") , summarise,
+                                        Store_Promo2MonthFlg_meansales = mean(SalesF))
+  
+  State_StoreType_meansales_f          <- c("Id","State","StoreType","SalesF")
+  State_StoreType_meansales            <- ddply(input_data[State_StoreType_meansales_f], 
+                                                c("State", "StoreType") , summarise,
+                                                State_StoreType_meansales = mean(SalesF))
+  
+  
   # Mean of input Sales per Store and Promo
-  Store_meancustomersales_f               <- c("Id","Store","DayOfWeek","Customers","SalesF")
+  Store_meancustomersales_f               <- c("Id","Store","DayOfWeek","Customers","Promo","SalesF")
   Store_DayOfWeek_meancustomersales       <- ddply(input_data[Store_meancustomersales_f], 
                                              c("Store", "DayOfWeek") , summarise,
                                              Store_DayOfWeek_meancustomersales = mean(SalesF)/mean(Customers))
   Store_meancustomersales                 <- ddply(input_data[Store_meancustomersales_f], 
                                                    c("Store") , summarise,
                                                    Store_meancustomersales = mean(SalesF)/mean(Customers))
+  Store_Promo_meancustomersales           <- ddply(input_data[Store_meancustomersales_f], 
+                                                   c("Store","Promo") , summarise,
+                                                   Store_Promo_meancustomersales = mean(SalesF)/mean(Customers))
   
   abfe_Sales_Store <- list(Store_DayOfWeek_meansales=Store_DayOfWeek_meansales,
                            Store_Promo_meansales=Store_Promo_meansales,
                            Store_DayOfWeek_meancustomersales=Store_DayOfWeek_meancustomersales,
-                           Store_meancustomersales=Store_meancustomersales)
+                           Store_meancustomersales=Store_meancustomersales,
+                           Store_Promo_meancustomersales=Store_Promo_meancustomersales,
+                           Store_Promo2_meansales=Store_Promo2_meansales,
+                           Store_Promo2MonthFlg_meansales=Store_Promo2MonthFlg_meansales,
+                           State_StoreType_meansales = State_StoreType_meansales)
   
   return(abfe_Sales_Store)
 }
 
-
-create_data_exploration <- function (input_data,iteration,output_mode)
-{
-  
-}
-
-# Fill CompetitionDistance with 0
-#
 
 process_store_missing_data <- function (input_store_data)
 {
@@ -273,6 +351,7 @@ process_store_missing_data <- function (input_store_data)
   
   return (store_data)
 }
+
 
 create_model_assessment_data <- function (me_input_data,ma_run_id)
 {

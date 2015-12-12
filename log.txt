@@ -2197,3 +2197,908 @@ eta
 2015-12-08 18:07:55 : MODEL_#XGBC#2015-12-08 18_02_03 Optimal Model Creation finished : 350.68
 
 2015-12-08 18:17:12 : Finished prediction on data
+
+2015-12-08 18:47:02 : Starting run ....................................
+
+2015-12-08 18:47:02 : Prepare data started
+
+2015-12-08 18:47:03 : Prepare train data started
+
+2015-12-08 18:51:22 : Starting run ....................................
+
+2015-12-08 18:51:22 : Prepare data started
+
+2015-12-08 18:51:24 : Prepare train data started
+
+2015-12-08 18:51:52 : Prepare train data finished
+
+2015-12-08 18:51:52 : Prepare test data started
+
+2015-12-08 18:51:53 : Prepare test data finished
+
+2015-12-08 18:51:56 : Prepare data finished
+
+2015-12-08 18:54:45 : Starting load data
+
+2015-12-08 18:54:46 : Finsihed load data
+
+2015-12-08 18:54:46 : Starting model assessment
+
+2015-12-08 18:54:46 : MA_#XGBC#2015-12-08 18_54_46 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.03	10
+
+2015-12-08 18:57:23 : Starting load data
+
+2015-12-08 18:57:23 : Finsihed load data
+
+2015-12-08 18:57:23 : Starting model assessment
+
+2015-12-08 18:57:23 : MA_#XGBC#2015-12-08 18_57_23 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-08 19:10:47 : Starting run ....................................
+
+2015-12-08 19:10:47 : Prepare data started
+
+2015-12-08 19:10:48 : Prepare train data started
+
+2015-12-08 19:11:31 : Prepare train data finished
+
+2015-12-08 19:11:31 : Prepare test data started
+
+2015-12-08 19:11:32 : Prepare test data finished
+
+2015-12-08 19:11:34 : Prepare data finished
+
+2015-12-08 19:11:53 : Starting load data
+
+2015-12-08 19:11:53 : Finsihed load data
+
+2015-12-08 19:11:54 : Starting model assessment
+
+2015-12-08 19:11:54 : MA_#XGBC#2015-12-08 19_11_54 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-08 19:19:33 : Starting run ....................................
+
+2015-12-08 19:19:33 : Prepare data started
+
+2015-12-08 19:19:34 : Prepare train data started
+
+2015-12-08 19:20:12 : Prepare train data finished
+
+2015-12-08 19:20:12 : Prepare test data started
+
+2015-12-08 19:20:14 : Prepare test data finished
+
+2015-12-08 19:20:15 : Prepare data finished
+
+2015-12-08 19:20:28 : Starting load data
+
+2015-12-08 19:20:28 : Finsihed load data
+
+2015-12-08 19:20:28 : Starting model assessment
+
+2015-12-08 19:20:28 : MA_#XGBC#2015-12-08 19_20_28 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-08 19:27:23 : Starting run ....................................
+
+2015-12-08 19:27:23 : Prepare data started
+
+2015-12-08 19:27:24 : Prepare train data started
+
+2015-12-08 19:28:03 : Prepare train data finished
+
+2015-12-08 19:28:03 : Prepare test data started
+
+2015-12-08 19:28:04 : Prepare test data finished
+
+2015-12-08 19:28:06 : Prepare data finished
+
+2015-12-08 19:29:01 : Starting load data
+
+2015-12-08 19:29:02 : Finsihed load data
+
+2015-12-08 19:29:02 : Starting model assessment
+
+2015-12-08 19:29:02 : MA_#XGBC#2015-12-08 19_29_02 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-08 19:57:08 : Starting run ....................................
+
+2015-12-08 19:57:08 : Prepare data started
+
+2015-12-08 19:57:09 : Prepare train data started
+
+2015-12-08 19:57:48 : Prepare train data finished
+
+2015-12-08 19:57:48 : Prepare test data started
+
+2015-12-08 19:57:49 : Prepare test data finished
+
+2015-12-08 19:57:51 : Prepare data finished
+
+2015-12-08 19:58:50 : Starting load data
+
+2015-12-08 19:58:51 : Finsihed load data
+
+2015-12-08 19:58:51 : Starting model assessment
+
+2015-12-08 19:58:51 : MA_#XGBC#2015-12-08 19_58_51 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-08 20:10:29 : MA_#XGBC#2015-12-08 19_58_51 Model Assesment finished : 698.18
+
+2015-12-08 20:14:44 : MA_#XGBC#2015-12-08 19_58_51 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.718791967454131
+Store_DayOfWeek_meansales	0.140659304576373
+Year_day	0.0263461035097113
+Date_day	0.0257626381992414
+DayOfWeek	0.0217399676592464
+Promo	0.0136119359741291
+Year_week	0.00759234098815279
+Date_year	0.00616588838569394
+CompetitionDistance	0.00431594432949075
+Date_month	0.00322766658449077
+Promo2SalesSeniorityMonths	0.00272015261677559
+CompetitionSalesSeniorityMonths	0.00261436650829577
+SchoolHolidayTypeeaster holidays	0.00252554772024891
+Store_DayOfWeek_meancustomersales	0.00242103510033334
+GDP	0.00214780504246741
+Store	0.00207303086298665
+Store_meancustomersales	0.00184308496796846
+CompetitionOpenSinceYear	0.00165310352974382
+StoreTypea	0.00148404941100064
+Store_Promo_meancustomersales	0.0013201656289235
+Promo2SinceWeek	0.00125535759723939
+Assortmentc	0.00121424339882443
+CompetitionOpenSinceMonth	0.00100996822887796
+StateNW	0.000953119068090332
+SchoolHolidayTypesummer holidays	0.000929917897551875
+Promo2SinceYear	0.000890611918653921
+StateSH	0.000790855256769286
+StateBY	0.000498914606091458
+SchoolHolidayDateFlg	0.000446266126949065
+Promo2MonthFlg	0.000444638005772766
+SchoolHolidayTypewhitsun holidays	0.000364168814146165
+StateBE	0.000254472280278061
+StateSN	0.000234597461230496
+StateBW	0.000228468307313299
+StoreTyped	0.000220105342678135
+StateRP	0.000196992415858033
+StoreTypeb	0.000196233507087754
+SchoolHolidayTypeautumn holidays	0.000170103329531021
+Assortmentb	0.000145763055414508
+StateST	0.000136632569793336
+StateHH	9.97330547043521e-05
+SchoolHolidayTypechristmas holidays	8.76825569654434e-05
+SchoolHolidayTypewinter holidays	5.92417887119318e-05
+StateTH	5.81309138736348e-05
+StateHB,NI	5.42680796256829e-05
+Promo2	4.34153685637963e-05
+
+2015-12-08 20:14:44 : MA_#XGBC#2015-12-08 19_58_51 Evaluation : 0.116882668850017
+
+2015-12-09 17:09:37 : Starting run ....................................
+
+2015-12-09 17:09:37 : Prepare data started
+
+2015-12-09 17:09:39 : Prepare train data started
+
+2015-12-09 17:14:50 : Starting run ....................................
+
+2015-12-09 17:14:50 : Prepare data started
+
+2015-12-09 17:14:51 : Prepare train data started
+
+2015-12-09 17:17:37 : Starting run ....................................
+
+2015-12-09 17:17:37 : Prepare data started
+
+2015-12-09 17:17:38 : Prepare train data started
+
+2015-12-09 17:18:17 : Prepare train data finished
+
+2015-12-09 17:18:17 : Prepare test data started
+
+2015-12-09 17:19:36 : Starting run ....................................
+
+2015-12-09 17:19:36 : Prepare data started
+
+2015-12-09 17:19:37 : Prepare train data started
+
+2015-12-09 17:23:25 : Starting run ....................................
+
+2015-12-09 17:23:25 : Prepare data started
+
+2015-12-09 17:23:26 : Prepare train data started
+
+2015-12-09 17:24:07 : Prepare train data finished
+
+2015-12-09 17:24:07 : Prepare test data started
+
+2015-12-09 17:24:08 : Prepare test data finished
+
+2015-12-09 17:24:10 : Prepare data finished
+
+2015-12-09 17:24:57 : Starting load data
+
+2015-12-09 17:24:58 : Finsihed load data
+
+2015-12-09 17:24:58 : Starting model assessment
+
+2015-12-09 17:24:58 : MA_#XGBC#2015-12-09 17_24_58 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-09 17:25:41 : Starting load data
+
+2015-12-09 17:25:41 : Finsihed load data
+
+2015-12-09 17:25:41 : Starting model assessment
+
+2015-12-09 17:25:41 : MA_#XGBC#2015-12-09 17_25_41 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.02	10
+
+2015-12-09 17:38:28 : MA_#XGBC#2015-12-09 17_25_41 Model Assesment finished : 767.17
+
+2015-12-09 17:43:52 : MA_#XGBC#2015-12-09 17_25_41 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.727829476030254
+Store_DayOfWeek_meansales	0.141648813398132
+Year_day	0.0249776482207604
+Date_day	0.0248386272463944
+DayOfWeek	0.0204941961748666
+Promo	0.0125864329248801
+Year_week	0.0070773812324677
+Date_year	0.00530028889031919
+CompetitionDistance	0.00346501856959165
+Store_Promo2_meansales	0.0033825589927528
+Date_month	0.00290662134751122
+SchoolHolidayTypeeaster holidays	0.00252033767753705
+Promo2SalesSeniorityMonths	0.00205463828804356
+CompetitionSalesSeniorityMonths	0.00174628188021423
+GDP	0.00171280654823462
+Store_DayOfWeek_meancustomersales	0.00171253755262678
+CompetitionOpenSinceYear	0.00148700556639962
+StoreTypea	0.0013511135874161
+Store	0.00128624006789942
+Store_meancustomersales	0.0012811922116648
+Assortmentc	0.00110949089263852
+Store_Promo_meancustomersales	0.000923779559760825
+Promo2SinceWeek	0.000914447995706544
+SchoolHolidayTypesummer holidays	0.000837340198433293
+Store_Promo2MonthFlg_meansales	0.000762950737860155
+Promo2SinceYear	0.000720180805761551
+CompetitionOpenSinceMonth	0.000686321228428215
+StateSH	0.000623130453457728
+StateNW	0.000582286941831139
+SchoolHolidayDateFlg	0.000432750849335206
+StateBY	0.000402943633310327
+Promo2MonthFlg	0.000359601450366018
+SchoolHolidayTypewhitsun holidays	0.000345272006824008
+StateBE	0.000186062983647531
+StoreTyped	0.000171586111627229
+StoreTypeb	0.000163323247461477
+Assortmentb	0.000160678662453334
+SchoolHolidayTypeautumn holidays	0.000153894590005995
+StateSN	0.000150727701739058
+StateBW	0.000141874021824004
+SchoolHolidayTypechristmas holidays	0.000132600967790725
+StateRP	0.00010771285688926
+StateST	9.640753420609e-05
+SchoolHolidayTypewinter holidays	5.67551446122282e-05
+StateHH	5.11240627084353e-05
+StateTH	3.04920623686168e-05
+StateHB,NI	2.03230836166936e-05
+Promo2	1.67238073698222e-05
+
+2015-12-09 17:43:52 : MA_#XGBC#2015-12-09 17_25_41 Evaluation : 0.122447441450027
+
+2015-12-09 17:47:23 : Starting load data
+
+2015-12-09 17:47:24 : Finsihed load data
+
+2015-12-09 17:47:24 : Starting model assessment
+
+2015-12-09 17:47:24 : MA_#XGBC#2015-12-09 17_47_24 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-09 17:59:55 : MA_#XGBC#2015-12-09 17_47_24 Model Assesment finished : 751.29
+
+2015-12-09 18:04:41 : MA_#XGBC#2015-12-09 17_47_24 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.717001614037543
+Store_DayOfWeek_meansales	0.141570676240381
+Year_day	0.0263071723682286
+Date_day	0.0257007452128402
+DayOfWeek	0.020856238822678
+Promo	0.0123693166302965
+Year_week	0.0074948208741926
+Date_year	0.00612137308035774
+CompetitionDistance	0.00408235975559375
+Store_Promo2_meansales	0.0036162928036908
+Date_month	0.00325540660914345
+Promo2SalesSeniorityMonths	0.00267907209367342
+CompetitionSalesSeniorityMonths	0.0026103348531774
+SchoolHolidayTypeeaster holidays	0.00260790902075698
+Store_DayOfWeek_meancustomersales	0.0021598297808789
+GDP	0.00202352216507105
+Store	0.00180215680648561
+CompetitionOpenSinceYear	0.00164894890990316
+Store_meancustomersales	0.0016254472457276
+StoreTypea	0.00152524810882425
+Store_Promo_meancustomersales	0.00132329784633153
+Assortmentc	0.00122877387050873
+Promo2SinceWeek	0.00115072046375773
+Store_Promo2MonthFlg_meansales	0.00110671141265089
+SchoolHolidayTypesummer holidays	0.000928804452316013
+CompetitionOpenSinceMonth	0.00088384590468429
+StateNW	0.000853274299979098
+Promo2SinceYear	0.000852381688488793
+StateSH	0.000718779816449466
+StateBY	0.000512546333944776
+SchoolHolidayDateFlg	0.000497054021828678
+Promo2MonthFlg	0.000424304546875429
+SchoolHolidayTypewhitsun holidays	0.000376628436081889
+StateBW	0.000228444817349534
+StateBE	0.000224366428637908
+StateSN	0.000219860979160495
+StoreTyped	0.000198907009177163
+StoreTypeb	0.000194068221898742
+StateRP	0.000165991327435631
+SchoolHolidayTypeautumn holidays	0.000165297758636422
+SchoolHolidayTypechristmas holidays	0.000136922372014065
+StateST	0.000132404638758877
+Assortmentb	0.000131622382089738
+StateHH	0.00010040114349695
+SchoolHolidayTypewinter holidays	5.64577279085016e-05
+StateTH	4.71870494079486e-05
+StateHB,NI	4.60964501646195e-05
+Promo2	3.63631805218988e-05
+
+2015-12-09 18:04:41 : MA_#XGBC#2015-12-09 17_47_24 Evaluation : 0.118280687811226
+
+2015-12-09 18:20:57 : Starting run ....................................
+
+2015-12-09 18:20:57 : Prepare data started
+
+2015-12-09 18:20:58 : Prepare train data started
+
+2015-12-09 18:23:25 : Starting run ....................................
+
+2015-12-09 18:23:25 : Prepare data started
+
+2015-12-09 18:23:26 : Prepare train data started
+
+2015-12-09 18:24:10 : Prepare train data finished
+
+2015-12-09 18:24:10 : Prepare test data started
+
+2015-12-09 18:26:02 : Starting run ....................................
+
+2015-12-09 18:26:02 : Prepare data started
+
+2015-12-09 18:26:03 : Prepare train data started
+
+2015-12-09 18:26:45 : Prepare train data finished
+
+2015-12-09 18:26:45 : Prepare test data started
+
+2015-12-09 18:26:46 : Prepare test data finished
+
+2015-12-09 18:26:48 : Prepare data finished
+
+2015-12-09 18:30:10 : Starting load data
+
+2015-12-09 18:30:11 : Finsihed load data
+
+2015-12-09 18:30:11 : Starting model assessment
+
+2015-12-09 18:30:11 : MA_#XGBC#2015-12-09 18_30_11 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-09 18:42:45 : MA_#XGBC#2015-12-09 18_30_11 Model Assesment finished : 753.76
+
+2015-12-09 18:47:25 : MA_#XGBC#2015-12-09 18_30_11 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.719320119097159
+Store_DayOfWeek_meansales	0.139658495926384
+Year_day	0.0264411865712499
+Date_day	0.025641413279908
+DayOfWeek	0.0207904429383028
+Promo	0.0126525531023742
+Year_week	0.00750094410690803
+Date_year	0.00598234412690476
+CompetitionDistance	0.00408168339684025
+Store_Promo2MonthFlg_meansales	0.00365279022948411
+Date_month	0.00320344724898916
+Promo2SalesSeniorityMonths	0.00262685186811525
+SchoolHolidayTypeeaster holidays	0.00258227890197549
+CompetitionSalesSeniorityMonths	0.00250782484167377
+Store_DayOfWeek_meancustomersales	0.00220027264626966
+GDP	0.00200020119196645
+Store	0.00186784134099519
+Store_meancustomersales	0.00170588207994136
+CompetitionOpenSinceYear	0.00165746080679915
+StoreTypea	0.00144662370202174
+Store_Promo_meancustomersales	0.00130412305494903
+Assortmentc	0.00119028971790424
+Promo2SinceWeek	0.00112951035359331
+State_StoreType_meansales	0.00109298548227437
+CompetitionOpenSinceMonth	0.00092527140673021
+SchoolHolidayTypesummer holidays	0.000901654666292293
+Promo2SinceYear	0.000838425154062953
+StateNW	0.000802002242658681
+StateSH	0.000699047403908431
+SchoolHolidayDateFlg	0.000485478827162685
+StateBY	0.000483623048214357
+Promo2MonthFlg	0.000437688039938918
+SchoolHolidayTypewhitsun holidays	0.000355891539402551
+StateSN	0.000206177585959834
+StoreTyped	0.000197955887941562
+StateBW	0.000195183951653918
+StoreTypeb	0.000172679988454695
+SchoolHolidayTypeautumn holidays	0.000170524272101011
+Assortmentb	0.000147314722984298
+StateBE	0.000129078133720992
+StateST	0.000123160622257354
+SchoolHolidayTypechristmas holidays	0.000121360394007166
+StateHH	9.35454910524632e-05
+StateRP	9.17787634750126e-05
+SchoolHolidayTypewinter holidays	7.56636239784114e-05
+StateHB,NI	4.39572212652259e-05
+StateTH	4.26885150246418e-05
+Promo2	2.22824847693465e-05
+
+2015-12-09 18:47:25 : MA_#XGBC#2015-12-09 18_30_11 Evaluation : 0.117413422219274
+
+2015-12-09 18:50:07 : Starting run ....................................
+
+2015-12-09 18:50:07 : Prepare data started
+
+2015-12-09 18:50:08 : Prepare train data started
+
+2015-12-09 18:50:49 : Prepare train data finished
+
+2015-12-09 18:50:49 : Prepare test data started
+
+2015-12-09 18:50:50 : Prepare test data finished
+
+2015-12-09 18:50:52 : Prepare data finished
+
+2015-12-09 18:52:35 : Starting load data
+
+2015-12-09 18:52:36 : Finsihed load data
+
+2015-12-09 18:52:36 : Starting model assessment
+
+2015-12-09 18:52:36 : MA_#XGBC#2015-12-09 18_52_36 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-09 19:04:46 : MA_#XGBC#2015-12-09 18_52_36 Model Assesment finished : 729.81
+
+2015-12-09 19:09:23 : MA_#XGBC#2015-12-09 18_52_36 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.721395417446929
+Store_DayOfWeek_meansales	0.138647523913873
+Year_day	0.0262618008774395
+Date_day	0.0257953376808152
+DayOfWeek	0.0213707740932983
+Promo	0.0135183725853625
+Year_week	0.00755374102027771
+Date_year	0.00613699975348535
+CompetitionDistance	0.00418986133109185
+Date_month	0.00324012785522496
+Promo2SalesSeniorityMonths	0.00264680400724785
+CompetitionSalesSeniorityMonths	0.00262046220913398
+SchoolHolidayTypeeaster holidays	0.00249797531881682
+Store_DayOfWeek_meancustomersales	0.002366710346068
+Store	0.00204859389963059
+GDP	0.00200577778156854
+Store_meancustomersales	0.00183534094711
+CompetitionOpenSinceYear	0.00164454209706031
+StoreTypea	0.00145957181305104
+Store_Promo_meancustomersales	0.00129171739091283
+Assortmentc	0.00120979339331033
+Promo2SinceWeek	0.00117186118572126
+State_StoreType_meansales	0.00116630740256697
+CompetitionOpenSinceMonth	0.000958734835099319
+SchoolHolidayTypesummer holidays	0.000924474420123694
+Promo2SinceYear	0.000892156977362408
+StateNW	0.000800791161822362
+StateSH	0.000725605915587118
+StateBY	0.000489778457047
+SchoolHolidayDateFlg	0.000464409949247064
+Promo2MonthFlg	0.00045115138686139
+SchoolHolidayTypewhitsun holidays	0.000367127652535205
+StateSN	0.000219371374131748
+StateBW	0.000208215147149305
+StoreTyped	0.000199519734432193
+StoreTypeb	0.000186039774375475
+SchoolHolidayTypeautumn holidays	0.000166811303041282
+Assortmentb	0.000147037904910633
+StateST	0.000127353073308702
+SchoolHolidayTypechristmas holidays	0.000114772101901111
+StateBE	0.000107030642609877
+StateRP	0.000105788752273509
+StateHH	8.45281432951976e-05
+SchoolHolidayTypewinter holidays	6.19232465134189e-05
+StateTH	5.00514536770521e-05
+StateHB,NI	4.86562951361811e-05
+Promo2	2.32559475627443e-05
+
+2015-12-09 19:09:23 : MA_#XGBC#2015-12-09 18_52_36 Evaluation : 0.11757964926782
+
+2015-12-09 19:25:01 : Starting run ....................................
+
+2015-12-09 19:25:01 : Prepare data started
+
+2015-12-09 19:25:02 : Prepare train data started
+
+2015-12-09 19:25:43 : Prepare train data finished
+
+2015-12-09 19:25:43 : Prepare test data started
+
+2015-12-09 19:25:44 : Prepare test data finished
+
+2015-12-09 19:25:46 : Prepare data finished
+
+2015-12-09 19:26:13 : Starting load data
+
+2015-12-09 19:26:13 : Finsihed load data
+
+2015-12-09 19:26:13 : Starting model assessment
+
+2015-12-09 19:26:13 : MA_#XGBC#2015-12-09 19_26_13 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-09 19:38:07 : MA_#XGBC#2015-12-09 19_26_13 Model Assesment finished : 713.9
+
+2015-12-09 19:42:42 : MA_#XGBC#2015-12-09 19_26_13 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.718791967454131
+Store_DayOfWeek_meansales	0.140659304576373
+Year_day	0.0263461035097113
+Date_day	0.0257626381992414
+DayOfWeek	0.0217399676592464
+Promo	0.0136119359741291
+Year_week	0.00759234098815279
+Date_year	0.00616588838569394
+CompetitionDistance	0.00431594432949075
+Date_month	0.00322766658449077
+Promo2SalesSeniorityMonths	0.00272015261677559
+CompetitionSalesSeniorityMonths	0.00261436650829577
+SchoolHolidayTypeeaster holidays	0.00252554772024891
+Store_DayOfWeek_meancustomersales	0.00242103510033334
+GDP	0.00214780504246741
+Store	0.00207303086298665
+Store_meancustomersales	0.00184308496796846
+CompetitionOpenSinceYear	0.00165310352974382
+StoreTypea	0.00148404941100064
+Store_Promo_meancustomersales	0.0013201656289235
+Promo2SinceWeek	0.00125535759723939
+Assortmentc	0.00121424339882443
+CompetitionOpenSinceMonth	0.00100996822887796
+StateNW	0.000953119068090332
+SchoolHolidayTypesummer holidays	0.000929917897551875
+Promo2SinceYear	0.000890611918653921
+StateSH	0.000790855256769286
+StateBY	0.000498914606091458
+SchoolHolidayDateFlg	0.000446266126949065
+Promo2MonthFlg	0.000444638005772766
+SchoolHolidayTypewhitsun holidays	0.000364168814146165
+StateBE	0.000254472280278061
+StateSN	0.000234597461230496
+StateBW	0.000228468307313299
+StoreTyped	0.000220105342678135
+StateRP	0.000196992415858033
+StoreTypeb	0.000196233507087754
+SchoolHolidayTypeautumn holidays	0.000170103329531021
+Assortmentb	0.000145763055414508
+StateST	0.000136632569793336
+StateHH	9.97330547043521e-05
+SchoolHolidayTypechristmas holidays	8.76825569654434e-05
+SchoolHolidayTypewinter holidays	5.92417887119318e-05
+StateTH	5.81309138736348e-05
+StateHB,NI	5.42680796256829e-05
+Promo2	4.34153685637963e-05
+
+2015-12-09 19:42:42 : MA_#XGBC#2015-12-09 19_26_13 Evaluation : 0.116882668850017
+
+2015-12-10 23:42:54 : Starting run ....................................
+
+2015-12-10 23:42:54 : Prepare data started
+
+2015-12-10 23:42:56 : Prepare train data started
+
+2015-12-10 23:46:24 : Starting run ....................................
+
+2015-12-10 23:46:24 : Prepare data started
+
+2015-12-10 23:46:25 : Prepare train data started
+
+2015-12-10 23:47:53 : Starting run ....................................
+
+2015-12-10 23:47:53 : Prepare data started
+
+2015-12-10 23:47:54 : Prepare train data started
+
+2015-12-10 23:49:41 : Starting run ....................................
+
+2015-12-10 23:49:41 : Prepare data started
+
+2015-12-10 23:49:42 : Prepare train data started
+
+2015-12-11 23:31:22 : Prepare train data started
+
+2015-12-11 23:55:29 : Starting run ....................................
+
+2015-12-11 23:55:29 : Prepare data started
+
+2015-12-11 23:55:30 : Prepare train data started
+
+2015-12-11 23:56:20 : Prepare train data finished
+
+2015-12-11 23:56:20 : Prepare test data started
+
+2015-12-11 23:56:21 : Prepare test data finished
+
+2015-12-11 23:56:23 : Prepare data finished
+
+2015-12-11 23:59:12 : Starting load data
+
+2015-12-11 23:59:13 : Finsihed load data
+
+2015-12-11 23:59:13 : Starting model assessment
+
+2015-12-11 23:59:13 : MA_#XGBC#2015-12-11 23_59_13 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-12 00:14:09 : MA_#XGBC#2015-12-11 23_59_13 Model Assesment finished : 895.42
+
+2015-12-12 00:18:53 : MA_#XGBC#2015-12-11 23_59_13 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.719286476932536
+Store_DayOfWeek_meansales	0.138309343334012
+Year_day	0.0241249603836599
+Date_day	0.0240566814999038
+DayOfWeek	0.0209982462351917
+Promo	0.0134272605123819
+Year_week	0.00709883965389275
+Date_year	0.00503437703146626
+CompetitionDistance	0.00426175733284265
+Max_TemperatureC	0.00364099329084195
+Date_month	0.00259054400340108
+Promo2SalesSeniorityMonths	0.00252937357616045
+CompetitionSalesSeniorityMonths	0.00240429186073877
+Store_DayOfWeek_meancustomersales	0.00231587691235037
+SchoolHolidayTypeeaster holidays	0.00223570189934984
+Store	0.00201253282199851
+Store_meancustomersales	0.00193125006183563
+GDP	0.00190982762123905
+Mean_TemperatureC	0.00188496209220812
+Min_TemperatureC	0.00182429481409487
+CompetitionOpenSinceYear	0.00172378698316637
+Precipitationmm	0.00162275319863946
+StoreTypea	0.00160181965120756
+Store_Promo_meancustomersales	0.00134785967104797
+Assortmentc	0.00127219974588262
+CloudCover	0.00121173268903479
+Promo2SinceWeek	0.0011986275928031
+CompetitionOpenSinceMonth	0.00103404732708396
+Promo2SinceYear	0.000941385866440489
+StateSH	0.000714986645093215
+SchoolHolidayTypesummer holidays	0.000651368002751828
+StateNW	0.000560346612628301
+SchoolHolidayDateFlg	0.000444066244109265
+Promo2MonthFlg	0.000414688628886879
+SchoolHolidayTypewhitsun holidays	0.000334858679753796
+Event_Rain	0.000297314459794322
+StateBY	0.000275514346401175
+Event_Snow	0.000266989163854082
+StoreTyped	0.000220650287452559
+StateBW	0.000199054778478425
+StateSN	0.000196707756326239
+StoreTypeb	0.000190887614846461
+StateBE	0.000183825387686905
+SchoolHolidayTypeautumn holidays	0.000180780600724501
+Assortmentb	0.000158529028582409
+StateRP	0.000152117376289117
+Event_Fog	0.000147940699369161
+SchoolHolidayTypechristmas holidays	0.000117178388364051
+StateST	0.000113252967928014
+Event_Thunderstorm	6.34648642182368e-05
+StateHH	5.92080790958914e-05
+SchoolHolidayTypewinter holidays	5.53121181449821e-05
+StateTH	5.09941581452866e-05
+StateHB,NI	4.75399779175883e-05
+Promo2	3.88417907866395e-05
+Event_Hail	3.1776746958581e-05
+
+2015-12-12 00:18:53 : MA_#XGBC#2015-12-11 23_59_13 Evaluation : 0.113432934710131
+
+2015-12-12 00:45:07 : Starting run ....................................
+
+2015-12-12 00:45:07 : Prepare data started
+
+2015-12-12 00:45:09 : Prepare train data started
+
+2015-12-12 00:45:47 : Prepare train data finished
+
+2015-12-12 00:45:47 : Prepare test data started
+
+2015-12-12 00:45:49 : Prepare test data finished
+
+2015-12-12 00:45:51 : Prepare data finished
+
+2015-12-12 00:48:07 : Starting run ....................................
+
+2015-12-12 00:48:07 : Prepare data started
+
+2015-12-12 00:48:08 : Prepare train data started
+
+2015-12-12 00:48:47 : Prepare train data finished
+
+2015-12-12 00:48:47 : Prepare test data started
+
+2015-12-12 00:48:48 : Prepare test data finished
+
+2015-12-12 00:48:51 : Prepare data finished
+
+2015-12-12 00:50:37 : Starting load data
+
+2015-12-12 00:50:38 : Finsihed load data
+
+2015-12-12 00:50:38 : Starting model assessment
+
+2015-12-12 00:50:38 : MA_#XGBC#2015-12-12 00_50_38 Model Assesment started
+nrounds
+eta
+max_depth
+500	0.05	10
+
+2015-12-12 01:02:20 : MA_#XGBC#2015-12-12 00_50_38 Model Assesment finished : 702.77
+
+2015-12-12 01:06:37 : MA_#XGBC#2015-12-12 00_50_38 Feature Importance : 
+Var
+Imp
+Store_Promo_meansales	0.765734931923798
+Store_DayOfWeek_meansales	0.0739066997758092
+Year_day	0.0264142626392187
+Date_day	0.0263502466571126
+DayOfWeek	0.0258690591189927
+Promo	0.0115993196587744
+Year_week	0.0078572629572871
+Date_year	0.00604215334134153
+CompetitionDistance	0.00524558478966948
+Max_TemperatureC	0.00451557526137686
+Promo2SalesSeniorityMonths	0.0033553662272336
+CompetitionSalesSeniorityMonths	0.00282863966179813
+Store_DayOfWeek_meancustomersales	0.00275313455848571
+Store	0.00265392335234222
+SchoolHolidayTypeeaster holidays	0.00263812036927889
+Date_month	0.0025486191741333
+Mean_TemperatureC	0.0023706563875751
+Store_meancustomersales	0.00233319337759721
+StoreTypea	0.00222247548013869
+Min_TemperatureC	0.00221472705054803
+CompetitionOpenSinceYear	0.00214929963714423
+Precipitationmm	0.00184384515283312
+CloudCover	0.00177085299510814
+Store_Promo_meancustomersales	0.00165482372202587
+Promo2SinceWeek	0.00159668208013903
+Assortmentc	0.00136740798209334
+CompetitionOpenSinceMonth	0.00126173031669773
+Promo2SinceYear	0.0011853158290472
+GDP	0.00102646543871051
+StateSH	0.000878905109956451
+SchoolHolidayTypesummer holidays	0.000776578962345068
+StateNW	0.000593283383517917
+SchoolHolidayDateFlg	0.000553243858371959
+Promo2MonthFlg	0.000487710679354175
+Event_Rain	0.000377015839597912
+SchoolHolidayTypewhitsun holidays	0.00037363989581625
+StateBY	0.00034102149181886
+StoreTyped	0.000334928064575784
+Event_Snow	0.000314599788119084
+StateBW	0.00029216713033048
+StoreTypeb	0.000257915295727746
+SchoolHolidayTypeautumn holidays	0.000199579396952436
+StateRP	0.000190660389896967
+Event_Fog	0.000190323517952292
+SchoolHolidayTypewinter holidays	8.82778738666192e-05
+StateHH	8.50186263220316e-05
+SchoolHolidayTypechristmas holidays	7.37419534315922e-05
+Event_Thunderstorm	6.74008037761592e-05
+StateHB,NI	6.45150159702371e-05
+Promo2	5.91700201048995e-05
+Assortmentb	5.40965487975964e-05
+Event_Hail	3.58314370869432e-05
+
+2015-12-12 01:06:37 : MA_#XGBC#2015-12-12 00_50_38 Evaluation : 0.115756965297135
+
+2015-12-12 01:08:26 : Starting prediction on data
+
+2015-12-12 01:08:26 : MODEL_#XGBC#2015-12-12 01_08_26 Optimal Model Creation started : 
+nrounds
+max_depth
+eta
+500	10	0.05
+
+2015-12-12 01:14:01 : MODEL_#XGBC#2015-12-12 01_08_26 Optimal Model Creation finished : 333.2
+
+2015-12-12 01:23:43 : Finished prediction on data
+
+2015-12-12 01:34:24 : Starting run ....................................
+
+2015-12-12 01:34:24 : Prepare data started
+
+2015-12-12 01:34:25 : Prepare train data started
+
+2015-12-12 01:35:16 : Prepare train data finished
+
+2015-12-12 01:35:16 : Prepare test data started
+
+2015-12-12 01:35:17 : Prepare test data finished
+
+2015-12-12 01:35:19 : Prepare data finished
+
+2015-12-12 01:38:47 : Starting prediction on data
+
+2015-12-12 01:38:48 : MODEL_#XGBC#2015-12-12 01_38_47 Optimal Model Creation started : 
+nrounds
+max_depth
+eta
+500	10	0.05
+
+2015-12-12 01:46:27 : MODEL_#XGBC#2015-12-12 01_38_47 Optimal Model Creation finished : 457
+
+2015-12-12 01:56:51 : Finished prediction on data

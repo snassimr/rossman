@@ -61,7 +61,7 @@ if (SYS_RUN_MODE == "ME") {
 
 ############################################ PREDICTION #####################################################
 
-ma_run_id <- "MA_#XGBC#2015-12-08 17_31_45"
+ma_run_id <- "MA_#XGBC#2015-12-12 00_50_38"
 if (SYS_RUN_MODE == "P") {
   create_log_entry("", "Starting prediction on data","SF")
   opt_model_id <- paste0("MODEL_","#",SYS_ALGORITHM_ID,"#",format(Sys.time(), "%Y-%m-%d %H_%M_%S"))
